@@ -10,10 +10,21 @@ export function crearCarousel() {
 
     const itemsHTML = data
       .map((producto, index) => `
-        <div class="carousel-item ${index === 0 ? "active" : ""}">
-          <img src="${producto.image}" class="d-block h-100" alt="${producto.title}">
+      <div class="carousel-item ${index === 0 ? "active" : ""}">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+              <img src="${producto.image}" class="img-fluid" style="max-height: 400px; object-fit: contain;" alt="${producto.title}">
+            </div>
+            <div class="col-md-6">
+              <h5>${producto.title}</h5>
+              <p>${producto.description}</p>
+              <p><strong>SUPER OFERTA $${producto.price}</strong></p>
+            </div>
+          </div>
         </div>
-      `)
+      </div>
+    `)
       .join("");
 
     contenedor.innerHTML = `

@@ -3,5 +3,5 @@ import { crearCarousel } from "./app/carousel.js";
 import { crearCarta } from "./app/card.js";
 
 
-//crearCarousel();
+crearCarousel();
 crearCarta();

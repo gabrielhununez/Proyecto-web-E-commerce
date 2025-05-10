@@ -1,14 +1,14 @@
 import { verProductos } from "../api.js";
 
-let contenedorCarta = document.querySelector("#main--div__tarjetas");
+let contenedorCarta = document.querySelector("#main--div__cartas");
 
 export function crearCarta()
 { 
     verProductos().then((data) => {
         if (!data || data.length === 0) return;
 
-        const itemsHTML = data.map((producto) => `
-        <div class="col-md-4 mb-4">
+        const plantillaCarta = data.map((producto) => `
+        <div class="col">
             <div class="card h-100">
                 <img src="${producto.image}" class="card-img-top" alt="${producto.title}" style="height: 250px; object-fit: contain;">
                 <div class="card-body d-flex flex-column">
@@ -20,6 +20,6 @@ export function crearCarta()
         </div>
     `).join("");
 
-        contenedorCarta.innerHTML = itemsHTML;
-    });
+        contenedorCarta.innerHTML += plantillaCarta;
+    }); 
 }
