@@ -1,14 +1,40 @@
-let canva = `
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
+export function cargarCarritoEnOffcanvas() {
+    const contenedor = document.getElementById("contenidoCarrito");
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    if (carrito.length === 0) {
+        contenedor.innerHTML = "<p>El carrito está vacío.</p>";
+        return;
+    }
+
+    const productosHTML = carrito
+        .map((producto) => `
+        <div class="card mb-2">
+            <div class="row g-0">
+                <div class="col-4">
+                    <img src="${producto.image}" class="img-fluid rounded-start" alt="${producto.title}">
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">${producto.title}</h5>
+                        <p class="card-text">$${producto.price} x ${producto.cantidad}</p>
+                        <p class="card-text"><small class="text-muted">Total: $${(producto.price * producto.cantidad).toFixed(2)}</small></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    <div class="offcanvas-body">
-        ...
-    </div>
-    </div>
-`;
+    `)
+    .join("");
 
+    contenedor.innerHTML = productosHTML;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const offcanvasEl = document.getElementById("offcanvasCarrito");
+    if (offcanvasEl) {
+        offcanvasEl.addEventListener("show.bs.offcanvas", () => {
+            cargarCarritoEnOffcanvas();
+        });
+    }
+});

@@ -22,6 +22,9 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                   </li>
+                  <button class="btn btn-outline-light position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasCarrito">
+                    🛒 Carrito
+                  </button>
                 </ul>
               </div>
             </div>
@@ -49,9 +52,13 @@
 
       <aside class="aside">
           <section class="section">
-              <article class="article">
-
-              </article>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasCarritoLabel">Tu Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+              </div>
+              <div class="offcanvas-body" id="contenidoCarrito"></div>
+            </div>
           </section>
       </aside>
 
