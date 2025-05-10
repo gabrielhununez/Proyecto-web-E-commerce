@@ -1,0 +1,10 @@
+#header--div__carousel{
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+}
+

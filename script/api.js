@@ -1,10 +1,10 @@
-export function getProducts() {
+export function verProductos() {
 	return fetch("https://fakestoreapi.com/products")
 		.then((res) => res.json())
 		.then((data) => data);
 }
 
-export function getCategories() {
+export function verCategorias() {
 	fetch("https://fakestoreapi.com/products/categories")
 		.then((res) => res.json())
 		.then((json) => console.log(json));

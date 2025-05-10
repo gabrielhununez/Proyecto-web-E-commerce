@@ -1,5 +1,7 @@
-import {getProducts} from "./api.js";
-import { createCarousel } from "./app/carousel.js";
+import { verProductos } from "./api.js";
+import { crearCarousel } from "./app/carousel.js";
+import { crearCarta } from "./app/card.js";
 
 
-createCarrousel();
+//crearCarousel();
+crearCarta();
