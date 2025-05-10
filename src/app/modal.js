@@ -1,25 +1,23 @@
-let modal =  `
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Launch static backdrop modal
-    </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+export function CrearModal(producto) {
+    const contenidoModal = document.querySelector("#contenido-modal-dinamico");
+
+    contenidoModal.innerHTML = `
         <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <h5 class="modal-title" id="modalTitle">${producto.title}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            ...
+            <img src="${producto.image}" class="img-fluid mb-3" style="height: 250px; object-fit: contain;">
+            <p>${producto.description}</p>
+            <p><strong>$${producto.price}</strong></p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Agregar al carrito</button>
         </div>
-        </div>
-    </div>
-    </div>
-`;
+    `;
+
+    const modalBootstrap = new bootstrap.Modal(document.getElementById("myModal"));
+    modalBootstrap.show();
+};

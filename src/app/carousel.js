@@ -1,8 +1,8 @@
 import { verProductos } from "../api.js";
 
-let contenedorDelCarousel = document.querySelector("#header--div__carousel");
+let contenedorDelCarousel = document.querySelector("#header--section__div-carousel");
 
-export function crearCarousel() {
+export function CrearCarousel() {
   const contenedor = document.createElement("div");
 
   verProductos().then((data) => {

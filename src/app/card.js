@@ -1,8 +1,9 @@
-import { verProductos } from "../api.js";
+import { verProductos } from "../api.js"; 
+import { CrearModal } from "./modal.js";
 
-let contenedorCarta = document.querySelector("#main--div__cartas");
+let contenedorCarta = document.querySelector("#main--section__div-cartas");
 
-export function crearCarta() {
+export function CrearCarta() {
     verProductos().then((data) => {
         if (!data || data.length === 0) return;
 
@@ -25,8 +26,11 @@ export function crearCarta() {
 
         document.querySelectorAll(".btn-ver").forEach((boton) => {
             boton.addEventListener("click", () => {
-                const idProducto = boton.getAttribute("btn-id");
-                alert(`ID del producto: ${idProducto}`);
+                const idProducto = parseInt(boton.getAttribute("btn-id"));
+                const producto = data.find(p => p.id === idProducto);
+                if (producto) {
+                    CrearModal(producto);
+                }
             });
         });
     });

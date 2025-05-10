@@ -1,7 +1,10 @@
 import { verProductos } from "./api.js";
-import { crearCarousel } from "./app/carousel.js";
-import { crearCarta } from "./app/card.js";
+import { CrearCarousel } from "./app/carousel.js";
+import { CrearCarta } from "./app/card.js";
+import { CrearModal } from "./app/modal.js";
 
 
-crearCarousel();
-crearCarta();
+
+CrearCarousel();
+CrearCarta();
+CrearModal();
